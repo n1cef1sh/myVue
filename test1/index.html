@@ -63,5 +63,54 @@
         }
     })
     </script>
+
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">reverse this message</button>
+    </div>
+    <script type="text/javascript">
+    var app5 =new Vue({
+        el:'#app-5',
+        data:{
+            message:'hello bro'
+        },
+        methods:{
+            reverseMessage:function(){
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+    </script>
+
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+    <script type="text/javascript">
+    var app6 = new Vue({
+        el:'#app-6',
+        data:{
+            message:'hey boy'
+        }
+    })
+    </script>
+
+    <div id ="test1">
+        {{a}}
+    </div>
+    <script type="text/javascript">
+    var data = {a:1};
+    var vm = new Vue({
+        el: '#test1',
+        data : data
+    })
+    vm.$data === data
+    vm.$el === document.getElementById('test1')
+
+    vm.$watch('a', function(newValue, oldValue){
+        console.log(newValue,oldValue);
+        //此回调将在'vm.a'改变后调用
+    }
+    </script>
 </body>
 </html>
