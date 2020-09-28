@@ -77,5 +77,57 @@
       }
     })
   </script>
+
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <script type="text/javascript">
+    var example2 = new Vue({
+        el: '#example-2',
+        data:{
+            name: 'PYQ'
+        },
+        methods:{
+            greet: function(event){
+                alert('hello'+this.name+"!")
+                if(event){
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
+    </script>
+
+
+    <div id = "example-3">
+        <button v-on:click="say">Say hi</button>
+        <button v-on:click="say">Say what</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el:'#example-3',
+        methods:{
+            say:function(){
+                alert('hello')
+            }
+        }
+    })
+    </script>
+
+    <div id = "example-4">
+        <button v-on:click="say('hi',$event)">Say hi</button>
+        <button v-on:click="say('what',$event)">Say what</button>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el:'#example-4',
+        methods:{
+            say:function(message,event){
+                alert(message),
+                alert(event.target.tagName)
+            }
+        }
+    })
+    </script>
 </body>
 </html>
