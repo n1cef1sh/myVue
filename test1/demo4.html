@@ -32,18 +32,65 @@
 
 
     <div id = "blog-post-demo">
-        <blog-post title="My journey with Vue"></blog-post>
-        <blog-post title="Blogging with Vue"></blog-post>
-        <blog-post title="Why Vue is so fun"></blog-post>
+        <blog-post 
+        v-for='post in posts'
+        v-bind:key='post.id'
+        v-bind:post='post'
+        ></blog-post>
+       
     </div>
     <script type="text/javascript">
     Vue.component('blog-post',{
-        props:['title'],
-        template: '<h3>{{ title }}</h3>'
-    })
+        props:['post'],
+        template: '\
+            <div class ="blog-post">\
+            <h3>{{ title }}</h3>\
+            <div v-html="post.content"></div>\
+            </div>\
+            '
+    })  
     new Vue({
-        el: '#blog-post-demo'
-    })
+        el: '#blog-post-demo',
+        data: {
+            posts: [
+                {id: 1, title: 'My', content:'aaaaa'}, 
+                {id: 2, title: 'Blogging', content: 'bbbbb'},
+                {id: 3, title: 'Why', content: 'ccccc'}
+            ]
+        }
+    }) 
     </script>
+<div id="blog-posts-events-demo" class="demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post" v-on:enlarge-text="postFontSize += 0.1"></blog-post>
+    </div>
+  </div>
+  <script>
+  Vue.component('blog-post', {
+    props: ['post'],
+    template: '\
+      <div class="blog-post">\
+        <h3>{{ post.title }}</h3>\
+        <button v-on:click="$emit(\'enlarge-text\')">\
+          Enlarge text\
+        </button>\
+        <div v-html="post.content"></div>\
+      </div>\
+    '
+  })
+  new Vue({
+    el: '#blog-posts-events-demo',
+    data: {
+      posts: [
+        { id: 1, title: 'My journey with Vue', content: '...content...' },
+        { id: 2, title: 'Blogging with Vue', content: '...content...' },
+        { id: 3, title: 'Why Vue is so fun', content: '...content...' }
+      ],
+      postFontSize: 1
+    }
+  })
+  </script>
+
+
 </body>
 </html>
