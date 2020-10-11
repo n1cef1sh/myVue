@@ -18,7 +18,6 @@ function handler (req, res) {
     res.end(data);
   });
 }
-
 //实时通讯的连接
 //io.on('connection,事件的回调函数)，监听socketio的连接事件
 io.on('connection', function (socket) {
