@@ -44,7 +44,12 @@ export default {
                     },
                     chatcontent:value
             })
-            console.log(value)
+            console.log(this)
+
+            this.chatList.push({
+                user:this.$root.$children[0].currentUser,
+                chatcontent:new Date()
+            })
         }
     }
 }

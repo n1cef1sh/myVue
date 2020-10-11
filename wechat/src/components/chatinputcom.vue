@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input @keydown.enter="sendEvent($event.target.value)" v-model="inputContent" type="text">
-        <button @click="sendEvent(inputContent)">发送</button>
+        <input @keydown.enter="send" v-model="inputContent" type="text">
+        <button @click="send">发送</button>
     </div>
 </template>
 
@@ -14,7 +14,10 @@ export default {
         }
     },
     methods:{
-        
+        send:function(){
+            this.sendEvent(this.inputContent)
+            this.inputContent=''   
+        }
     }
 }
 </script>

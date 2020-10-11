@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="socket.io.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        //console.log(io)
+        var con = io.connect('http://localhost')
+        con.on('news',function(data){
+            console.log(data)
+            
+            con.emit('my other event', {
+                username:'nicefish',
+                chatcontent:'hihihihihi'
+            })
+        })
+    </script>
+</body>
+</html>
