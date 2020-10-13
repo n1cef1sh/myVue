@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+</head>
+<body>
+    <section id="todoapp">
+        <!--输入框-->
+        <header class="header">
+            <h1>记事本</h1>
+            <input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" 
+             autocomplete="off" placeholder="请输入事件" class="new-todo" />
+        </header>
+
+        <!-- 列表 -->
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index"> 1、</span>
+                        <label>吃饭</label>
+                        <button class="destroy"></button>
+                    </div>
+                </li>
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index"> 2、</span>
+                        <label>睡觉</label>
+                        <button class="destroy"></button>
+                    </div>
+                </li>
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index"> 3、</span>
+                        <label>编码</label>
+                        <button class="destroy"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- 统计和清空 -->
+        <footer class="footer">
+            <span class="todo-count"><strong>1</strong> items left </span>
+            <button class="clear-completed">
+                Clear
+            </button>
+        </footer>
+    </section>
+
+</body>
+</html>
