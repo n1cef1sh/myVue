@@ -57,7 +57,7 @@ var app = new Vue({
             .then(function(response){
                 //console.log(response);
                 that.musicList = response.data.result.songs;
-                console.log(response.data.result.songs);
+                //console.log(response.data.result.songs);
             },
             function(err){})
 
@@ -81,7 +81,7 @@ var app = new Vue({
           axios.get("https://autumnfish.cn/song/detail?ids="+musicId)
           .then(function(response){
             //console.log(response);
-            console.log(response.data.songs[0].al.picUrl);
+            //console.log(response.data.songs[0].al.picUrl);
             that.musicCover = response.data.songs[0].al.picUrl;
           },function(err){})
 
@@ -89,7 +89,7 @@ var app = new Vue({
           axios.get("https://autumnfish.cn/comment/hot?type=0&id="+musicId)
           .then(function(response){
             //console.log(response);
-            console.log(response.data.hotComments);
+            //console.log(response.data.hotComments);
             that.hotComments = response.data.hotComments;
           },function(err){})
         },
